@@ -1,0 +1,47 @@
+Activity2:
+
+#Episode4
+create table episode4(name string, line string) 
+row format delimited fields terminated by '\t'
+tblproperties("skip.header.line.count"="2");
+
+load data local inpath '/episode4.txt' into table episode4;
+
+select name, count(name) as no_of_lines
+from episode4 group by name order by no_of_lines desc;
+
+insert overwrite directory '/user/projects/hiveoutput'
+row format delimited fields terminated by '\t'
+select * from episode4;
+
+dfs -cat /user/projects/hiveoutput/000000_0;
+
+#Episode5
+create table episode5(name string, line string)
+row format delimited fields terminated by '\t'
+tblproperties("skip.header.line.count"="2");
+
+load data local inpath '/episode5.txt' into table episode5;
+
+select name, count(name) as no_of_lines 
+from episode5 group by name order by no_of_lines desc;
+
+insert overwrite directory '/user/projects/hiveoutput'
+row format delimited fields terminated by '\t'
+select * from episode5;
+
+dfs -cat /user/projects/hiveoutput/000000_0;
+
+#Episode6
+create table episode6(name string, line string) 
+row format delimited fields terminated by '\t'
+tblproperties("skip.header.line.count"="2");
+
+load data local inpath '/episode6.txt' into table episode6;
+
+select name, count(name) as no_of_lines 
+from episode6 group by name order by no_of_lines desc;
+
+insert overwrite directory '/user/projects/hiveoutput'
+row format delimited fields terminated by '\t'
+select * from episode6;
