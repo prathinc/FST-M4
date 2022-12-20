@@ -1,0 +1,8 @@
+#Activity 2
+
+select count(*) from episode4 where instr(line, 'Luke')>0;
+
+#Output
+OK
+35
+Time taken: 16.796 seconds, Fetched: 1 row(s)
